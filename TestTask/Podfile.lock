@@ -1,0 +1,20 @@
+PODS:
+  - NeedleFoundation (0.17.2)
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - NeedleFoundation (~> 0.17)
+  - SnapKit (~> 5.0)
+
+SPEC REPOS:
+  trunk:
+    - NeedleFoundation
+    - SnapKit
+
+SPEC CHECKSUMS:
+  NeedleFoundation: 36cfaea9ae9eb527a796f5c1df19296c722666b8
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: 4cff8032fa423fffcc6523b0323c8b4e91d07d71
+
+COCOAPODS: 1.10.0
