@@ -9,6 +9,9 @@ import UIKit
 import SnapKit
 
 final class FeedView: UIView {
+    
+    var viewModel = FeedView.ViewModel(photos: [])
+    
     private let cellIdentifier = "\(FeedCell.self)"
     
     private lazy var layout: UICollectionViewLayout = {
@@ -45,6 +48,11 @@ final class FeedView: UIView {
     
     required init?(coder: NSCoder) { nil }
     
+    func setup(viewModel: FeedView.ViewModel) {
+        self.viewModel = viewModel
+        collectionView.reloadData()
+    }
+    
     private func addSubviews() {
         add { collectionView }
     }
@@ -67,13 +75,21 @@ extension FeedView: UICollectionViewDelegate {
 
 extension FeedView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        9
+        viewModel.photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? FeedCell else {
             fatalError()
         }
+        let viewModel = viewModel.photos[indexPath.row]
+        cell.configure(viewModel: viewModel)
         return cell
+    }
+}
+
+extension FeedView {
+    struct ViewModel {
+        let photos: [FeedCell.ViewModel]
     }
 }
