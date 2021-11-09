@@ -23,16 +23,18 @@ public func registerProviderFactories() {
 // MARK: - Providers
 
 private class FeedDependency8d800b54ac79b0fb48b1BaseProvider: FeedDependency {
-
-
-    init() {
-
+    var networkService: NetworkServiceProtocol {
+        return applicationComponent.networkService
+    }
+    private let applicationComponent: ApplicationComponent
+    init(applicationComponent: ApplicationComponent) {
+        self.applicationComponent = applicationComponent
     }
 }
 /// ^->ApplicationComponent->FeedCoordinatorComponent->FeedComponent
 private class FeedDependency8d800b54ac79b0fb48b1Provider: FeedDependency8d800b54ac79b0fb48b1BaseProvider {
     init(component: NeedleFoundation.Scope) {
-        super.init()
+        super.init(applicationComponent: component.parent.parent as! ApplicationComponent)
     }
 }
 private class FeedCoordinatorDependencyf2ba58bfa928bef8e024BaseProvider: FeedCoordinatorDependency {

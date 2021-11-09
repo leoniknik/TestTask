@@ -28,6 +28,7 @@ final class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+        interactor.viewDidLoad()
     }
     
     private func setupNavigationBar() {
