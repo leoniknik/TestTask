@@ -8,11 +8,13 @@
 import UIKit
 
 protocol FeedDisplayLogic: AnyObject {
-    
+    func display(viewModel: FeedView.ViewModel)
 }
 
 final class FeedViewController: UIViewController {
     private let interactor: FeedBusinessLogic
+    
+    private lazy var contentView = FeedView()
     
     init(interactor: FeedBusinessLogic) {
         self.interactor = interactor
@@ -22,13 +24,13 @@ final class FeedViewController: UIViewController {
     required init?(coder: NSCoder) { nil }
     
     override func loadView() {
-        view = FeedView()
+        view = contentView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        interactor.viewDidLoad()
+        interactor.didSearch(text: "flower,car")
     }
     
     private func setupNavigationBar() {
@@ -41,7 +43,9 @@ final class FeedViewController: UIViewController {
 }
 
 extension FeedViewController: FeedDisplayLogic {
-    
+    func display(viewModel: FeedView.ViewModel) {
+        contentView.setup(viewModel: viewModel)
+    }
 }
 
 extension FeedViewController: UISearchControllerDelegate {

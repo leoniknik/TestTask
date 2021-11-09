@@ -8,7 +8,8 @@
 import Foundation
 
 protocol FeedPresentationLogic {
-    
+    func presentPhotos(_ photos: [Photo])
+    func presentError()
 }
 
 final class FeedPresenter {
@@ -16,5 +17,15 @@ final class FeedPresenter {
 }
 
 extension FeedPresenter: FeedPresentationLogic {
+    func presentPhotos(_ photos: [Photo]) {
+        let photoViewModels: [FeedCell.ViewModel] = photos.compactMap {
+            guard let url = URL(string: $0.urlSquare) else { return nil }
+            return FeedCell.ViewModel(url: url)
+        }
+        view?.display(viewModel: .init(photos: photoViewModels))
+    }
     
+    func presentError() {
+        
+    }
 }

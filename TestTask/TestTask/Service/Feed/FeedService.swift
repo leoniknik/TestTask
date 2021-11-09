@@ -32,7 +32,9 @@ extension FeedService: FeedServiceProtocol {
                     }
                 }
             case let .failure(error):
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
             }
         }
     }

@@ -8,7 +8,6 @@
 import Foundation
 
 protocol FeedBusinessLogic {
-    func viewDidLoad()
     func didSearch(text: String)
 }
 
@@ -25,6 +24,7 @@ final class FeedInteractor {
     private let feedService: FeedServiceProtocol
     private let page = 1
     private let batchSize = 20
+    private var photos: [Photo] = []
     
     init(output: FeedModuleOutput, presenter: FeedPresentationLogic, feedService: FeedServiceProtocol) {
         self.output = output
@@ -34,16 +34,15 @@ final class FeedInteractor {
 }
 
 extension FeedInteractor: FeedBusinessLogic {
-    func viewDidLoad() {
-    }
-    
     func didSearch(text: String) {
-        feedService.obtainPhotos(tags: text, page: page, batchSize: batchSize) { result in
+        // bip: активити на время загрузки
+        feedService.obtainPhotos(tags: text, page: page, batchSize: batchSize) { [weak self] result in
             switch result {
-            case let .success(photoDesctiptions):
-                print(photoDesctiptions)
-            case let .failure(error):
-                print(error)
+            case let .success(photos):
+                self?.photos = photos
+                self?.presenter.presentPhotos(photos)
+            case .failure:
+                self?.presenter.presentError()
             }
         }
     }
