@@ -16,4 +16,7 @@ final class ApplicationComponent: BootstrapComponent {
  
 extension ApplicationComponent: ApplicationComponentProtocol {
     var feedCoordinatorComponent: FeedCoordinatorComponentProtocol { FeedCoordinatorComponent(parent: self) }
+    var networkService: NetworkServiceProtocol {
+        NetworkService()
+    }
 }

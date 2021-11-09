@@ -40,6 +40,11 @@
 		CA8DF3F12732940300D674EF /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DF3F02732940300D674EF /* FeedService.swift */; };
 		CA8DF3F3273294AA00D674EF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DF3F2273294AA00D674EF /* NetworkService.swift */; };
 		CA8DF3F5273295A400D674EF /* FeedApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8DF3F4273295A400D674EF /* FeedApiService.swift */; };
+		CA8F52CD273B0023001FB4C8 /* PhotoFeedDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F52CC273B0023001FB4C8 /* PhotoFeedDTO.swift */; };
+		CA8F52CF273B0035001FB4C8 /* PhotoFeedPageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F52CE273B0035001FB4C8 /* PhotoFeedPageDTO.swift */; };
+		CA8F52D1273B0045001FB4C8 /* PhotoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F52D0273B0045001FB4C8 /* PhotoDTO.swift */; };
+		CA8F52D3273B0365001FB4C8 /* ApiScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F52D2273B0365001FB4C8 /* ApiScheme.swift */; };
+		CA8F52D7273B061D001FB4C8 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8F52D6273B061D001FB4C8 /* Photo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +110,11 @@
 		CA8DF3F02732940300D674EF /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
 		CA8DF3F2273294AA00D674EF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CA8DF3F4273295A400D674EF /* FeedApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedApiService.swift; sourceTree = "<group>"; };
+		CA8F52CC273B0023001FB4C8 /* PhotoFeedDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFeedDTO.swift; sourceTree = "<group>"; };
+		CA8F52CE273B0035001FB4C8 /* PhotoFeedPageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFeedPageDTO.swift; sourceTree = "<group>"; };
+		CA8F52D0273B0045001FB4C8 /* PhotoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDTO.swift; sourceTree = "<group>"; };
+		CA8F52D2273B0365001FB4C8 /* ApiScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiScheme.swift; sourceTree = "<group>"; };
+		CA8F52D6273B061D001FB4C8 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +295,7 @@
 			children = (
 				CA8DF3EF273293C200D674EF /* Feed */,
 				CA8DF3ED2732937D00D674EF /* Network */,
+				CA8F52D2273B0365001FB4C8 /* ApiScheme.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -300,10 +311,30 @@
 		CA8DF3EF273293C200D674EF /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				CA8F52CB273AFBDD001FB4C8 /* DTO */,
+				CA8F52C9273AFBCB001FB4C8 /* Model */,
 				CA8DF3F02732940300D674EF /* FeedService.swift */,
 				CA8DF3F4273295A400D674EF /* FeedApiService.swift */,
 			);
 			path = Feed;
+			sourceTree = "<group>";
+		};
+		CA8F52C9273AFBCB001FB4C8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CA8F52D6273B061D001FB4C8 /* Photo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CA8F52CB273AFBDD001FB4C8 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				CA8F52CC273B0023001FB4C8 /* PhotoFeedDTO.swift */,
+				CA8F52CE273B0035001FB4C8 /* PhotoFeedPageDTO.swift */,
+				CA8F52D0273B0045001FB4C8 /* PhotoDTO.swift */,
+			);
+			path = DTO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -563,12 +594,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA81D8572730424F008DD5F6 /* ViewController.swift in Sources */,
+				CA8F52D3273B0365001FB4C8 /* ApiScheme.swift in Sources */,
 				CA81D8AE27306C46008DD5F6 /* UIView+AddViewBuilder.swift in Sources */,
 				CA8DF3F5273295A400D674EF /* FeedApiService.swift in Sources */,
 				CA81D8532730424F008DD5F6 /* AppDelegate.swift in Sources */,
 				CA81D89A273057FB008DD5F6 /* FeedDataFlow.swift in Sources */,
 				CA81D898273057D2008DD5F6 /* FeedInteractor.swift in Sources */,
 				CA8DF3F3273294AA00D674EF /* NetworkService.swift in Sources */,
+				CA8F52CF273B0035001FB4C8 /* PhotoFeedPageDTO.swift in Sources */,
 				CA81D894273057BD008DD5F6 /* FeedViewController.swift in Sources */,
 				CA81D896273057C7008DD5F6 /* FeedPresenter.swift in Sources */,
 				CA81D8A427305898008DD5F6 /* FeedCoordinator.swift in Sources */,
@@ -576,12 +609,15 @@
 				CA81D8862730451D008DD5F6 /* ApplicationCoordinatorInteractor.swift in Sources */,
 				CA81D8A02730584A008DD5F6 /* FeedView.swift in Sources */,
 				CA81D88F273050D2008DD5F6 /* NeedleGenerated.swift in Sources */,
+				CA8F52D7273B061D001FB4C8 /* Photo.swift in Sources */,
+				CA8F52D1273B0045001FB4C8 /* PhotoDTO.swift in Sources */,
 				CA81D8AC27306143008DD5F6 /* Module.swift in Sources */,
 				CA81D89E27305816008DD5F6 /* FeedComponent.swift in Sources */,
 				CA81D8AA273058C1008DD5F6 /* FeedCoordinatorComponent.swift in Sources */,
 				CA81D89C27305806008DD5F6 /* FeedAssembly.swift in Sources */,
 				CA81D88327304431008DD5F6 /* ApplicationCoordinator.swift in Sources */,
 				CA8DF3F12732940300D674EF /* FeedService.swift in Sources */,
+				CA8F52CD273B0023001FB4C8 /* PhotoFeedDTO.swift in Sources */,
 				CA81D88B2730456F008DD5F6 /* ApplicationCoordinatorComponent.swift in Sources */,
 				CA81D8A6273058A4008DD5F6 /* FeedCoordinatorAssembly.swift in Sources */,
 				CA8DF3EB27328CA500D674EF /* FeedCell.swift in Sources */,

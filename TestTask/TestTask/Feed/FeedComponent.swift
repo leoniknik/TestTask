@@ -8,11 +8,11 @@
 import NeedleFoundation
 
 protocol FeedDependency: Dependency {
-    
+    var networkService: NetworkServiceProtocol { get }
 }
 
 protocol FeedComponentProtocol {
-    
+    var feedService: FeedServiceProtocol { get }
 }
 
 final class FeedComponent: Component<FeedDependency> {
@@ -20,5 +20,7 @@ final class FeedComponent: Component<FeedDependency> {
 }
  
 extension FeedComponent: FeedComponentProtocol {
-    
+    var feedService: FeedServiceProtocol {
+        FeedService(apiService: FeedApiService(scheme: ApiScheme(), networkService: dependency.networkService))
+    }
 }

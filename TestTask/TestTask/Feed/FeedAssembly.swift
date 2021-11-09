@@ -12,6 +12,7 @@ protocol FeedAssemblyProtocol {
 }
 
 final class FeedAssembly {
+    // bip: скоупы
     private let component: FeedComponentProtocol
     
     init(component: FeedComponentProtocol) {
@@ -22,7 +23,7 @@ final class FeedAssembly {
 extension FeedAssembly: FeedAssemblyProtocol {
     func assemble(output: FeedModuleOutput) -> Module<FeedModuleInput> {
         let presenter = FeedPresenter()
-        let interactor = FeedInteractor(output: output, presenter: presenter)
+        let interactor = FeedInteractor(output: output, presenter: presenter, feedService: component.feedService)
         let viewController = FeedViewController(interactor: interactor)
         presenter.view = viewController
         return Module(input: interactor as FeedModuleInput, view: viewController)
