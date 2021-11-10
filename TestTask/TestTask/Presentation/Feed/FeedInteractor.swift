@@ -9,12 +9,14 @@ import Foundation
 
 protocol FeedBusinessLogic {
     func didSearch(text: String)
+    func didSelectItem(with index: Int)
 }
 
 protocol FeedModuleInput {
 }
 
 protocol FeedModuleOutput: AnyObject {
+    func didSelect(photo: Photo)
 }
 
 
@@ -34,12 +36,18 @@ final class FeedInteractor {
 }
 
 extension FeedInteractor: FeedBusinessLogic {
+    func didSelectItem(with index: Int) {
+        let photo = photos[index]
+        output?.didSelect(photo: photo)
+    }
+    
     func didSearch(text: String) {
-        // bip: активити на время загрузки
+        presenter.present(isLoading: true)
         feedService.obtainPhotos(tags: text, page: page, batchSize: batchSize) { [weak self] result in
             switch result {
             case let .success(photos):
                 self?.photos = photos
+                self?.presenter.present(isLoading: false)
                 self?.presenter.presentPhotos(photos)
             case .failure:
                 self?.presenter.presentError()
