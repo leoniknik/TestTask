@@ -13,6 +13,7 @@ protocol FeedCoordinatorDependency: Dependency {
 
 protocol FeedCoordinatorComponentProtocol {
     var feedComponent: FeedComponentProtocol { get }
+    var detailComponent: DetailComponentProtocol { get }
 }
 
 final class FeedCoordinatorComponent: Component<FeedCoordinatorDependency> {
@@ -20,5 +21,6 @@ final class FeedCoordinatorComponent: Component<FeedCoordinatorDependency> {
 }
  
 extension FeedCoordinatorComponent: FeedCoordinatorComponentProtocol {
+    var detailComponent: DetailComponentProtocol { DetailComponent(parent: self) }
     var feedComponent: FeedComponentProtocol { FeedComponent(parent: self) }
 }

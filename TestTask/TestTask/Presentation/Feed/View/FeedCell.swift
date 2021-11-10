@@ -27,17 +27,18 @@ final class FeedCell: UICollectionViewCell {
     required init?(coder: NSCoder) { nil }
     
     private func addSubviews() {
-        contentView.add { imageView }
+//        contentView.add { imageView }
     }
     
     private func setupLayout() {
-        imageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+//        imageView.snp.makeConstraints { make in
+//            make.edges.equalToSuperview()
+//        }
     }
     
     private func setupStyle() {
-        contentView.backgroundColor = .white
+        contentView
+//        contentView.backgroundColor = .white
     }
 }
 

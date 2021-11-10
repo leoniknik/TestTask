@@ -28,12 +28,14 @@ extension FeedCoordinatorAssembly: FeedCoordinatorAssemblyProtocol {
         finishHandler: @escaping () -> ()
     ) -> FeedCoordinatorProtocol {
         let feedAssembly = FeedAssembly(component: component.feedComponent)
+        let datailAssembly = DetailAssembly(component: component.detailComponent)
         
         let interactor = FeedCoordinatorInteractor()
         let coordinator = FeedCoordinator(
             navigationController: navigationController,
             interactor: interactor,
             feedAssembly: feedAssembly,
+            datailAssembly: datailAssembly,
             finishHandler: finishHandler
         )
         interactor.delegate = coordinator

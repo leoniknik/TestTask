@@ -11,6 +11,9 @@ public func registerProviderFactories() {
     __DependencyProviderRegistry.instance.registerDependencyProviderFactory(for: "^->ApplicationComponent") { component in
         return EmptyDependencyProvider(component: component)
     }
+    __DependencyProviderRegistry.instance.registerDependencyProviderFactory(for: "^->ApplicationComponent->FeedCoordinatorComponent->DetailComponent") { component in
+        return DetailDependency16b77b0b188d07b7b4dbProvider(component: component)
+    }
     __DependencyProviderRegistry.instance.registerDependencyProviderFactory(for: "^->ApplicationComponent->FeedCoordinatorComponent->FeedComponent") { component in
         return FeedDependency8d800b54ac79b0fb48b1Provider(component: component)
     }
@@ -22,6 +25,19 @@ public func registerProviderFactories() {
 
 // MARK: - Providers
 
+private class DetailDependency16b77b0b188d07b7b4dbBaseProvider: DetailDependency {
+
+
+    init() {
+
+    }
+}
+/// ^->ApplicationComponent->FeedCoordinatorComponent->DetailComponent
+private class DetailDependency16b77b0b188d07b7b4dbProvider: DetailDependency16b77b0b188d07b7b4dbBaseProvider {
+    init(component: NeedleFoundation.Scope) {
+        super.init()
+    }
+}
 private class FeedDependency8d800b54ac79b0fb48b1BaseProvider: FeedDependency {
     var networkService: NetworkServiceProtocol {
         return applicationComponent.networkService

@@ -8,10 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol FeedViewDelegate: AnyObject {
+    func didSelectItem(at indexPath: IndexPath)
+}
+
 final class FeedView: UIView {
+    weak var delegate: FeedViewDelegate?
     
-    var viewModel = FeedView.ViewModel(photos: [])
-    
+    private var viewModel = FeedView.ViewModel(photos: [])
     private let cellIdentifier = "\(FeedCell.self)"
     
     private lazy var layout: UICollectionViewLayout = {
@@ -24,18 +28,25 @@ final class FeedView: UIView {
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(fraction))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
+    
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
-        
         return UICollectionViewCompositionalLayout(section: section)
     }()
+    
+    
     
     private lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.dataSource = self
         view.delegate = self
         view.register(FeedCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        return view
+    }()
+    
+    private lazy var activityView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .large)
+        view.hidesWhenStopped = true
         return view
     }()
     
@@ -53,11 +64,21 @@ final class FeedView: UIView {
         collectionView.reloadData()
     }
     
+    func display(isLoading: Bool) {
+        isLoading ? activityView.startAnimating() : activityView.stopAnimating()
+    }
+    
     private func addSubviews() {
-        add { collectionView }
+        add {
+            collectionView
+            activityView
+        }
     }
     
     private func setupLayout() {
+        activityView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -66,11 +87,14 @@ final class FeedView: UIView {
     private func setupStyle() {
         backgroundColor = .white
         collectionView.backgroundColor = .white
+        activityView.color = .gray
     }
 }
 
 extension FeedView: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didSelectItem(at: indexPath)
+    }
 }
 
 extension FeedView: UICollectionViewDataSource {
