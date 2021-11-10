@@ -28,6 +28,8 @@ final class FeedInteractor {
     private let batchSize = 20
     private var photos: [Photo] = []
     private let debouncer = Debouncer(delay: 1.5)
+    private var lastSearchText = ""
+    private var job: Cancelable?
     
     init(output: FeedModuleOutput, presenter: FeedPresentationLogic, feedService: FeedServiceProtocol) {
         self.output = output
@@ -51,8 +53,11 @@ extension FeedInteractor: FeedBusinessLogic {
     }
     
     private func obtainPhotos(text: String) {
+        guard text != lastSearchText, text != "" else { return }
+        lastSearchText = text
         presenter.present(isLoading: true)
-        feedService.obtainPhotos(tags: text, page: page, batchSize: batchSize) { [weak self] result in
+        job?.cancel()
+        job = feedService.obtainPhotos(tags: text, page: page, batchSize: batchSize) { [weak self] result in
             switch result {
             case let .success(photos):
                 self?.photos = photos
@@ -68,3 +73,6 @@ extension FeedInteractor: FeedBusinessLogic {
 extension FeedInteractor: FeedModuleInput {
     
 }
+
+// bip: Readme
+//Try to implement mocking for NSURLSession to replace a real networking communication and demonstrate unit testing experience

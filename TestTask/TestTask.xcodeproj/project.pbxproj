@@ -50,6 +50,8 @@
 		CAB9EFCB273B26B800090CCF /* DetailAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9EFCA273B26B800090CCF /* DetailAssembly.swift */; };
 		CAB9EFCD273B26F000090CCF /* DetailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9EFCC273B26F000090CCF /* DetailComponent.swift */; };
 		CAB9F092273BD13D00090CCF /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9F091273BD13D00090CCF /* Debouncer.swift */; };
+		CAB9F24A273BD76000090CCF /* Cancelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9F249273BD76000090CCF /* Cancelable.swift */; };
+		CAB9F24C273BD78700090CCF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9F24B273BD78700090CCF /* Request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +127,8 @@
 		CAB9EFCA273B26B800090CCF /* DetailAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAssembly.swift; sourceTree = "<group>"; };
 		CAB9EFCC273B26F000090CCF /* DetailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailComponent.swift; sourceTree = "<group>"; };
 		CAB9F091273BD13D00090CCF /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		CAB9F249273BD76000090CCF /* Cancelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancelable.swift; sourceTree = "<group>"; };
+		CAB9F24B273BD78700090CCF /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +255,7 @@
 				CA81D8AB27306143008DD5F6 /* Module.swift */,
 				CA81D8AD27306C46008DD5F6 /* UIView+AddViewBuilder.swift */,
 				CAB9F091273BD13D00090CCF /* Debouncer.swift */,
+				CAB9F249273BD76000090CCF /* Cancelable.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				CA8DF3F2273294AA00D674EF /* NetworkService.swift */,
+				CAB9F24B273BD78700090CCF /* Request.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -642,6 +648,7 @@
 			files = (
 				CAB9EFC5273B267900090CCF /* DetailViewController.swift in Sources */,
 				CA8F52D3273B0365001FB4C8 /* ApiScheme.swift in Sources */,
+				CAB9F24A273BD76000090CCF /* Cancelable.swift in Sources */,
 				CA81D8AE27306C46008DD5F6 /* UIView+AddViewBuilder.swift in Sources */,
 				CA8DF3F5273295A400D674EF /* FeedApiService.swift in Sources */,
 				CA81D8532730424F008DD5F6 /* AppDelegate.swift in Sources */,
@@ -670,6 +677,7 @@
 				CA81D88B2730456F008DD5F6 /* ApplicationCoordinatorComponent.swift in Sources */,
 				CA81D8A6273058A4008DD5F6 /* FeedCoordinatorAssembly.swift in Sources */,
 				CA8DF3EB27328CA500D674EF /* FeedCell.swift in Sources */,
+				CAB9F24C273BD78700090CCF /* Request.swift in Sources */,
 				CA81D88927304549008DD5F6 /* ApplicationCoordinatorAssembly.swift in Sources */,
 				CA81D8912730562E008DD5F6 /* Coordinator.swift in Sources */,
 				CA81D8A8273058B1008DD5F6 /* FeedCoordinatorInteractor.swift in Sources */,

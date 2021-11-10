@@ -39,8 +39,10 @@ final class FeedViewController: UIViewController {
     
     private func setupNavigationBar() {
         title = "Search photo"
+        // We can use composite module for this case for flexibility
         let searchController = UISearchController(searchResultsController: nil)
         searchController.delegate = self
+        searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
     }
@@ -58,6 +60,13 @@ extension FeedViewController: FeedDisplayLogic {
 
 extension FeedViewController: UISearchControllerDelegate {
     
+}
+
+extension FeedViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        interactor.didSearch(text: text)
+    }
 }
 
 extension FeedViewController: FeedViewDelegate {
