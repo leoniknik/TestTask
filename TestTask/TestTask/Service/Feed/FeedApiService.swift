@@ -40,7 +40,6 @@ extension FeedApiService: FeedApiServiceProtocol {
         batchSize: Int,
         completion: @escaping (Result<PhotoFeedDTO, ApiServiceError>) -> ()
     ) {
-//        let tagsKey = tags.joined(separator: ",")
         let params = [
             "api_key": scheme.apiKey,
             "method": scheme.photosSearchMethod,
@@ -52,6 +51,7 @@ extension FeedApiService: FeedApiServiceProtocol {
             "page": "\(page)"
         ]
         guard let request = Request(url: scheme.baseAPIURL, method: .get, queryParameters: params).asURLRequest() else {
+            completion(.failure(.request))
             return
         }
         networkService.sendRequest(request: request) { [weak self] result in

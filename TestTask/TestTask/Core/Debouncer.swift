@@ -7,6 +7,11 @@
 
 import Foundation
 
+protocol DebouncerProtocol {
+    func debounce(block: @escaping () -> ())
+    func flush()
+}
+
 public final class Debouncer {
     private let queue = DispatchQueue(label: "com.testtask.throttler", qos: .default)
 
@@ -29,4 +34,8 @@ public final class Debouncer {
     public func flush() {
         job.cancel()
     }
+}
+
+extension Debouncer: DebouncerProtocol {
+    
 }
