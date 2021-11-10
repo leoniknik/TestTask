@@ -11,7 +11,7 @@ struct PhotoDTO: Decodable {
     let id: String
     let title: String
     let urlSquare: String
-    let urlMedium: String
+    let urlMedium: String?
     
     enum CodingKeys: String, CodingKey {
         case id

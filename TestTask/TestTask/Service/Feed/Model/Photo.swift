@@ -11,7 +11,7 @@ struct Photo {
     let id: String
     let title: String
     let urlSquare: String
-    let urlMedium: String
+    let urlMedium: String?
     
     init(dto: PhotoDTO) {
         self.id = dto.id

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FeedServiceProtocol {
-    func obtainPhotos(tags: String, page: Int, batchSize: Int, completion: @escaping (Result<[Photo], Error>) -> ()) -> Cancelable
+    func obtainPhotos(tags: String, page: Int, batchSize: Int, completion: @escaping (Result<[Photo], Error>) -> ()) -> Cancelable?
 }
 
 final class FeedService {
@@ -21,7 +21,7 @@ final class FeedService {
 }
 
 extension FeedService: FeedServiceProtocol {
-    func obtainPhotos(tags: String, page: Int, batchSize: Int, completion: @escaping (Result<[Photo], Error>) -> ()) -> Cancelable {
+    func obtainPhotos(tags: String, page: Int, batchSize: Int, completion: @escaping (Result<[Photo], Error>) -> ()) -> Cancelable? {
         var job = DispatchWorkItem {}
         job = DispatchWorkItem { [weak self] in
             self?.apiService.obtainPhotos(tags: tags, page: page, batchSize: batchSize) { result in

@@ -14,7 +14,7 @@
 		CA81D8552730424F008DD5F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D8542730424F008DD5F6 /* SceneDelegate.swift */; };
 		CA81D85C27304253008DD5F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA81D85B27304253008DD5F6 /* Assets.xcassets */; };
 		CA81D85F27304253008DD5F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA81D85D27304253008DD5F6 /* LaunchScreen.storyboard */; };
-		CA81D86A27304254008DD5F6 /* TestTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D86927304254008DD5F6 /* TestTaskTests.swift */; };
+		CA81D86A27304254008DD5F6 /* FeedInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D86927304254008DD5F6 /* FeedInteractorTests.swift */; };
 		CA81D87527304254008DD5F6 /* TestTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D87427304254008DD5F6 /* TestTaskUITests.swift */; };
 		CA81D88327304431008DD5F6 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D88227304431008DD5F6 /* ApplicationCoordinator.swift */; };
 		CA81D8862730451D008DD5F6 /* ApplicationCoordinatorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81D8852730451D008DD5F6 /* ApplicationCoordinatorInteractor.swift */; };
@@ -52,6 +52,7 @@
 		CAB9F092273BD13D00090CCF /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9F091273BD13D00090CCF /* Debouncer.swift */; };
 		CAB9F24A273BD76000090CCF /* Cancelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9F249273BD76000090CCF /* Cancelable.swift */; };
 		CAB9F24C273BD78700090CCF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9F24B273BD78700090CCF /* Request.swift */; };
+		CAB9F24E273BE8A500090CCF /* FeedDebounceWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9F24D273BE8A500090CCF /* FeedDebounceWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +89,7 @@
 		CA81D85E27304253008DD5F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA81D86027304253008DD5F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA81D86527304254008DD5F6 /* TestTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA81D86927304254008DD5F6 /* TestTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTaskTests.swift; sourceTree = "<group>"; };
+		CA81D86927304254008DD5F6 /* FeedInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInteractorTests.swift; sourceTree = "<group>"; };
 		CA81D86B27304254008DD5F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA81D87027304254008DD5F6 /* TestTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA81D87427304254008DD5F6 /* TestTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTaskUITests.swift; sourceTree = "<group>"; };
@@ -129,6 +130,7 @@
 		CAB9F091273BD13D00090CCF /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		CAB9F249273BD76000090CCF /* Cancelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancelable.swift; sourceTree = "<group>"; };
 		CAB9F24B273BD78700090CCF /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		CAB9F24D273BE8A500090CCF /* FeedDebounceWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDebounceWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,7 +224,7 @@
 		CA81D86827304254008DD5F6 /* TestTaskTests */ = {
 			isa = PBXGroup;
 			children = (
-				CA81D86927304254008DD5F6 /* TestTaskTests.swift */,
+				CA81D86927304254008DD5F6 /* FeedInteractorTests.swift */,
 				CA81D86B27304254008DD5F6 /* Info.plist */,
 			);
 			path = TestTaskTests;
@@ -277,6 +279,7 @@
 				CA81D897273057D2008DD5F6 /* FeedInteractor.swift */,
 				CA81D89B27305806008DD5F6 /* FeedAssembly.swift */,
 				CA81D89D27305816008DD5F6 /* FeedComponent.swift */,
+				CAB9F24D273BE8A500090CCF /* FeedDebounceWorker.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				CA81D88927304549008DD5F6 /* ApplicationCoordinatorAssembly.swift in Sources */,
 				CA81D8912730562E008DD5F6 /* Coordinator.swift in Sources */,
 				CA81D8A8273058B1008DD5F6 /* FeedCoordinatorInteractor.swift in Sources */,
+				CAB9F24E273BE8A500090CCF /* FeedDebounceWorker.swift in Sources */,
 				CAB9EFCB273B26B800090CCF /* DetailAssembly.swift in Sources */,
 				CAB9EFCD273B26F000090CCF /* DetailComponent.swift in Sources */,
 				CAB9EFC7273B268A00090CCF /* DetailPresenter.swift in Sources */,
@@ -691,7 +695,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA81D86A27304254008DD5F6 /* TestTaskTests.swift in Sources */,
+				CA81D86A27304254008DD5F6 /* FeedInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -892,7 +896,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TestTaskTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -914,7 +918,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TestTaskTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

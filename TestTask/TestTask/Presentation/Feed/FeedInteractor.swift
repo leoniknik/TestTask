@@ -19,7 +19,6 @@ protocol FeedModuleOutput: AnyObject {
     func didSelect(photo: Photo)
 }
 
-
 final class FeedInteractor {
     private weak var output: FeedModuleOutput?
     private let presenter: FeedPresentationLogic
@@ -27,14 +26,20 @@ final class FeedInteractor {
     private let page = 1
     private let batchSize = 20
     private var photos: [Photo] = []
-    private let debouncer = Debouncer(delay: 1.5)
+    private let worker: FeedDebounceWorkerProtocol
     private var lastSearchText = ""
     private var job: Cancelable?
     
-    init(output: FeedModuleOutput, presenter: FeedPresentationLogic, feedService: FeedServiceProtocol) {
+    init(
+        output: FeedModuleOutput,
+        presenter: FeedPresentationLogic,
+        feedService: FeedServiceProtocol,
+        worker: FeedDebounceWorkerProtocol
+    ) {
         self.output = output
         self.presenter = presenter
         self.feedService = feedService
+        self.worker = worker
     }
 }
 
@@ -45,10 +50,8 @@ extension FeedInteractor: FeedBusinessLogic {
     }
     
     func didSearch(text: String) {
-        debouncer.debounce {
-            DispatchQueue.main.async { [weak self] in
-                self?.obtainPhotos(text: text)
-            }
+        worker.debounce { [weak self] in
+            self?.obtainPhotos(text: text)
         }
     }
     
@@ -58,10 +61,10 @@ extension FeedInteractor: FeedBusinessLogic {
         presenter.present(isLoading: true)
         job?.cancel()
         job = feedService.obtainPhotos(tags: text, page: page, batchSize: batchSize) { [weak self] result in
+            self?.presenter.present(isLoading: false)
             switch result {
             case let .success(photos):
                 self?.photos = photos
-                self?.presenter.present(isLoading: false)
                 self?.presenter.presentPhotos(photos)
             case .failure:
                 self?.presenter.presentError()
@@ -73,6 +76,3 @@ extension FeedInteractor: FeedBusinessLogic {
 extension FeedInteractor: FeedModuleInput {
     
 }
-
-// bip: Readme
-//Try to implement mocking for NSURLSession to replace a real networking communication and demonstrate unit testing experience

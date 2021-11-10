@@ -18,7 +18,7 @@ final class DetailPresenter {
 
 extension DetailPresenter: DetailPresentationLogic {
     func present(photo: Photo) {
-        guard let url = URL(string: photo.urlMedium) else { return }
+        guard let url = URL(string: photo.urlMedium ?? photo.urlSquare) else { return }
         view?.display(viewModel: .init(url: url))
     }
     
