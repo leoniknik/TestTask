@@ -2,7 +2,7 @@
 
 Setup Project
 
-# Uber DI Framework need generator
+# Uber DI Framework needs generator
 1) brew install needle
 
 # Setup cocoapods
