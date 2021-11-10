@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FeedServiceProtocol {
-    func obtainPhotos(tags: String, page: Int, batchSize: Int, completion: @escaping (Result<[Photo], Error>) -> ())
+    func obtainPhotos(tags: String, page: Int, batchSize: Int, completion: @escaping (Result<[Photo], Error>) -> ()) -> Cancelable
 }
 
 final class FeedService {
@@ -21,21 +21,25 @@ final class FeedService {
 }
 
 extension FeedService: FeedServiceProtocol {
-    func obtainPhotos(tags: String, page: Int, batchSize: Int, completion: @escaping (Result<[Photo], Error>) -> ()) {
-        apiService.obtainPhotos(tags: tags, page: page, batchSize: batchSize) { [weak self] result in
-            switch result {
-            case let .success(response):
-                self?.queue.async {
+    func obtainPhotos(tags: String, page: Int, batchSize: Int, completion: @escaping (Result<[Photo], Error>) -> ()) -> Cancelable {
+        var job = DispatchWorkItem {}
+        job = DispatchWorkItem { [weak self] in
+            self?.apiService.obtainPhotos(tags: tags, page: page, batchSize: batchSize) { result in
+                guard job.isCancelled == false else { return }
+                switch result {
+                case let .success(response):
                     let model = response.photos.photos.map { Photo(dto: $0) }
                     DispatchQueue.main.async {
                         completion(.success(model))
                     }
-                }
-            case let .failure(error):
-                DispatchQueue.main.async {
-                    completion(.failure(error))
+                case let .failure(error):
+                    DispatchQueue.main.async {
+                        completion(.failure(error))
+                    }
                 }
             }
         }
+        queue.async(execute: job)
+        return job
     }
 }
