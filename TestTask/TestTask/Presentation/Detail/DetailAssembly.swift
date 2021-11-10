@@ -12,7 +12,6 @@ protocol DetailAssemblyProtocol {
 }
 
 final class DetailAssembly {
-    // bip: скоупы
     private let component: DetailComponentProtocol
     
     init(component: DetailComponentProtocol) {

@@ -27,6 +27,7 @@ final class FeedInteractor {
     private let page = 1
     private let batchSize = 20
     private var photos: [Photo] = []
+    private let debouncer = Debouncer(delay: 1.5)
     
     init(output: FeedModuleOutput, presenter: FeedPresentationLogic, feedService: FeedServiceProtocol) {
         self.output = output
@@ -42,6 +43,14 @@ extension FeedInteractor: FeedBusinessLogic {
     }
     
     func didSearch(text: String) {
+        debouncer.debounce {
+            DispatchQueue.main.async { [weak self] in
+                self?.obtainPhotos(text: text)
+            }
+        }
+    }
+    
+    private func obtainPhotos(text: String) {
         presenter.present(isLoading: true)
         feedService.obtainPhotos(tags: text, page: page, batchSize: batchSize) { [weak self] result in
             switch result {

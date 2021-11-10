@@ -10,6 +10,20 @@ import UIKit
 
 final class FeedCell: UICollectionViewCell {
     
+    override var isSelected: Bool {
+        didSet {
+            if self.isSelected {
+                UIView.animate(withDuration: 0.2) {
+                    self.contentView.alpha = 0.5
+                } completion: { completed in
+                    UIView.animate(withDuration: 0.2) {
+                        self.contentView.alpha = 1
+                    }
+                }
+            }
+        }
+    }
+    
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
@@ -27,18 +41,17 @@ final class FeedCell: UICollectionViewCell {
     required init?(coder: NSCoder) { nil }
     
     private func addSubviews() {
-//        contentView.add { imageView }
+        contentView.add { imageView }
     }
     
     private func setupLayout() {
-//        imageView.snp.makeConstraints { make in
-//            make.edges.equalToSuperview()
-//        }
+        imageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     private func setupStyle() {
-        contentView
-//        contentView.backgroundColor = .white
+        contentView.backgroundColor = .white
     }
 }
 

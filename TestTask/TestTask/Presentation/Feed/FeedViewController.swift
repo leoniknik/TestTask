@@ -35,7 +35,6 @@ final class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        interactor.didSearch(text: "flower,car")
     }
     
     private func setupNavigationBar() {

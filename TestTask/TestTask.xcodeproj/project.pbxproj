@@ -49,6 +49,7 @@
 		CAB9EFC9273B269700090CCF /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9EFC8273B269700090CCF /* DetailInteractor.swift */; };
 		CAB9EFCB273B26B800090CCF /* DetailAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9EFCA273B26B800090CCF /* DetailAssembly.swift */; };
 		CAB9EFCD273B26F000090CCF /* DetailComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9EFCC273B26F000090CCF /* DetailComponent.swift */; };
+		CAB9F092273BD13D00090CCF /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9F091273BD13D00090CCF /* Debouncer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		CAB9EFC8273B269700090CCF /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 		CAB9EFCA273B26B800090CCF /* DetailAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAssembly.swift; sourceTree = "<group>"; };
 		CAB9EFCC273B26F000090CCF /* DetailComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailComponent.swift; sourceTree = "<group>"; };
+		CAB9F091273BD13D00090CCF /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 				CA81D8902730562E008DD5F6 /* Coordinator.swift */,
 				CA81D8AB27306143008DD5F6 /* Module.swift */,
 				CA81D8AD27306C46008DD5F6 /* UIView+AddViewBuilder.swift */,
+				CAB9F091273BD13D00090CCF /* Debouncer.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				CA8DF3F3273294AA00D674EF /* NetworkService.swift in Sources */,
 				CA8F52CF273B0035001FB4C8 /* PhotoFeedPageDTO.swift in Sources */,
 				CA81D894273057BD008DD5F6 /* FeedViewController.swift in Sources */,
+				CAB9F092273BD13D00090CCF /* Debouncer.swift in Sources */,
 				CAB9EFC9273B269700090CCF /* DetailInteractor.swift in Sources */,
 				CA81D896273057C7008DD5F6 /* FeedPresenter.swift in Sources */,
 				CA81D8A427305898008DD5F6 /* FeedCoordinator.swift in Sources */,

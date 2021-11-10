@@ -31,6 +31,6 @@ extension FeedPresenter: FeedPresentationLogic {
     }
     
     func presentError() {
-        
+        // Here we can make some error info and ask view to display it
     }
 }

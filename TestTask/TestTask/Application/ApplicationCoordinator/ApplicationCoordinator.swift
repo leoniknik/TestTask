@@ -30,7 +30,6 @@ final class ApplicationCoordinator: Coordinator {
     }
     
     override func start() {
-        // bip: вынести в фабрику
         let navigationController = UINavigationController()
         navigationController.navigationBar.prefersLargeTitles = true
         window.rootViewController = navigationController

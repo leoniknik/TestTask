@@ -12,7 +12,6 @@ protocol FeedAssemblyProtocol {
 }
 
 final class FeedAssembly {
-    // bip: скоупы
     private let component: FeedComponentProtocol
     
     init(component: FeedComponentProtocol) {
